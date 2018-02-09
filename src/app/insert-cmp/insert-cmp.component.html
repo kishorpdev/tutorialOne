@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <p>
+      <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample">
+        show {{ isCollapsed ? 'Form' : 'Code'}}
+      </button>
+    </p>
+  </div>
+  <div class="col-md-6">
+
+    <div id="collapseExample" [ngbCollapse]="isCollapsed">
+      <div class="card">
+        <div class="card-body">
+          <label for="typeahead-basic">title : </label>
+          <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="product_title" />
+          <hr>
+          <label for="typeahead-basic">price : </label>
+          <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="product_price" />
+        </div>
+        <button class="btn btn-primary" (click)="insertProduct()">Submit</button>
+      </div>
+    </div>
+    <div id="collapseExample" [ngbCollapse]="!isCollapsed">
+      <div class="card">
+        <div class="card-body">
+          <div style="white-space: pre-wrap;">
+            {{data}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="lastProductAdded" class="col-md-6">
+    <p class="alert alert-success">{{ lastProductAdded.message }} </p>
+    <p>Id : {{ lastProductAdded.product._id }} </p>
+    <p>Title : {{ lastProductAdded.product.title }} </p>
+    <p>Price : {{ lastProductAdded.product.price }} </p>
+  </div>
+
+</div>

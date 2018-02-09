@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public name="MEAN STACK APP demo"
+
+  onNameChange(event){
+    this.name = event.target.value
+  }
+
+  handleUserUpdated(user) {
+  }  
 }
